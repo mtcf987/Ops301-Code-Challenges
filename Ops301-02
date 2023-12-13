@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Script:       Append; Date and Time
+# Creator:      Malena Tomlin
+# Date:         12/2023
+# Overview:     Timestamp essential for log generation; manipulate variable in bash.
+# Instructions: Copies /var/log/syslog to current working directory. Appends current date and time to the filename.
+
+# Define destination directories
+src_dir='/var/log'
+dest_dir='/backups'
+
+# Check that the destination directory has been created. Add/create one if the destination directory does not exist.
+mkdir -p "$dest_dir"
+
+# Define the source, desitination names, and include timestamps
+current=$(date +'%Y-%m-%d-%H:%M:%S')
+src_file="$src_dir/syslog"
+dest_file="$dest_dir/syslog-$current"
+
+# Copy syslog file to destination w/ timestamp
+cp "$src_file" "$dest_file"
+
+echo "Log file copied to: $dest_file"
+
+# Source List: iAmAndrewCarroll, 
