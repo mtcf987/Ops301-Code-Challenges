@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+# Author:                       Malena Tomlin
+# Date of latest revision:      12/2023
+# Purpose/Script:               Ops 301: Python Conditionals Challenge
+
+# Assign values to variables a and b:
+a = 10
+b = 5
+
+# I had a lot of errors in my script and decided to refer to OpenAI as a source for correction.
+# OpenAi provided the following which is much more streamlined.
+
+# Check equality
+if a == b:
+    print("a is equal to b")
+else:
+    print("a is not equal to b")
+
+# Check inequalities
+if a > b:
+    print("a is greater than b")
+elif a <= b:
+    print("a is less than or equal to b")
+
+# Check both conditions using 'and'
+if 5 < a < 15 and 3 < b < 7:
+    print("Both conditions are met (5 < a < 15 and 3 < b < 7)")
+
+# Check either condition using 'or'
+if a > 15 or b < 3:
+    print("Either condition is met (a > 15 or b < 3)")
+
+# Nested if statement
+if a > 8:
+    print("a is greater than 8")
+    if b < 3:
+        print("b is less than 3")
+
+# Create an if statement with pass
+if a < 3:
+    pass
+else:
+    print("a is not less than 3")
