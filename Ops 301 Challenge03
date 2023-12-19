@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Author:   Malena Tomlin
+# Course:   Ops 301
+# Date:     12/2023
+
+# Prompt for directory path:
+read -p "Enter a directory path: " dir
+
+# Check if directory exists:
+if [ ! -d "$dir" ]; then
+  echo "The directory $dir does not exist."
+  exit 1
+fi
+
+# Navigate to the directory:
+cd "$dir" || exit 1
+
+# See current permissions:
+  read -p "Do you want to see current permissions? (y/n): " show
+
+  if [ "$show" == "y" ]; then
+    # print permissions
+    echo "Current Permissions:"
+    ls -l
+  fi
+
+  # prompt for new permissions
+  read -p "Do you want to change permissions? (y/n): " change
+
+  if [ "$change" == "y" ]; then
+    # prompt for new permissions
+    read -p "Enter new permissions (ex: 777, 400, etc): " perms
+
+    # change permissions
+    chmod -R "$perms" .
+
+    # print new permissions
+    echo "New Permissions: $perms"
+  fi
+else
+  echo "The directory $dir does not exist."
+fi
