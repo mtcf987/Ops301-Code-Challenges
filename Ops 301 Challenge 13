@@ -1,0 +1,26 @@
+Author: Malena Tomlin
+Course/Purpose: Ops 301 Challenge 13/ Group Policy
+Date: 12/2023
+
+# Prompt for the user details:
+$firstName = Read-Host "Enter First Name:"
+$lastName = Read-Host "Enter Last Name:"
+$title = Read-Host "Enter Title:"
+$department = Read-Host "Enter Department:"
+$company = Read-Host "Enter Company:"
+$location = Read-Host "Enter Location:"
+
+# Build the email address:
+$emailAddress = "$firstName@GlobeXpower.com"
+
+# Build the UPN login:
+$upn = "$firstName@GlobeXpower.com"
+
+# Build the organizational unit (OU) path:
+$ouPath = "OU=$department,OU=GlobeX USA,DC=GlobeXpower,DC=com"
+
+# Create the new user; considering arrangements of first and last name:
+New-ADUser -Name "$firstName $lastName" -SamAccountName "$firstName$lastName" -Title $title -Department $department -Company $company -EmailAddress $emailAddress -UserPrincipalName $upn -Path $ouPath -Description "$firstName $lastName is the $title at $company in $location office." -PasswordNeverExpires:$true
+
+# Optional: Display the confirmation message:
+Write-Host "User $firstName $lastName created successfully!"
