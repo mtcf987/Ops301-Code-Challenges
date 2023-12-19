@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+# Author:   Malena Tomlin
+# Course:   Ops 301 Challenge 07
+# Date:     12/2023
+
+from pathlib import Path
+
+# The Function to generate the directory structure and files:
+def generate_directory_structure(user_path):
+    path = Path(user_path)
+ 
+for item in path.iterdir():
+        if item.is_dir():
+            print(f"Current Directory: {item}")
+            generate_directory_structure(item)
+        elif item.is_file():
+            print(f"File: {item}")
+
+# The Main function:
+if __name__ == "__main__":
+    # Ask the user for a directory path(s):
+    user_path = input("Enter a directory path: ")
+
+    # Call the function to generate directory structure(s):
+    generate_directory_structure(user_path)
