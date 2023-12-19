@@ -1,0 +1,44 @@
+#!/bin/bash
+
+Author:   Malena Tomlin
+Course:   Ops301 Challenge 04
+Date:     12/2023
+
+# Display the menu:
+function show_menu() {
+  echo "Main Menu:"
+  echo "1. Hello World, may I have another?"
+  echo "2. Ping Self"
+  echo "3. IP Info"
+  echo "4. Exit"
+  echo "Make your selection, nerd: "
+}
+
+# Display the network adapter information:
+function ip_info() {
+  echo "Network Info: "
+  ifconfig
+}
+
+# The Main Loop:
+while true; do
+  clear # clear screen for menu
+  show_menu # display menu
+  read -r choice # read user input
+
+  case $choice in
+    1) echo "Hello World, may I have another?";;
+    2) echo "Pinging Self..."
+       ping -c 4 127.0.0.1 # Ping self
+       ;;
+    3) ip_info # Display the network information.
+       ;;
+    4) echo "Exiting..."
+       exit 0 # Exit the script
+       ;;
+    *) echo "Invalid Selection, try again nerd.";;
+  esac
+
+  # pause before clearing screen
+  read -rp "Press [Enter] to continue..."
+done
