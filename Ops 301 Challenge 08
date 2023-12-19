@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+# Author: Malena Tomlin
+Course:   Ops 301: Challenge 08
+# Date:   12/6/2023
+
+
+# Define the list
+phrase_list = ["Embrace", "cosmic", "burritos", "of", "existence;", "dance", "with", "starlight", "in", "taco", "shells"]
+
+# Print specific elements
+print("Fourth element:", phrase_list[3])
+print("Sixth through tenth elements:", phrase_list[5:])
+
+# Update an element
+phrase_list[6] = "onion"
+print("Updated list:", phrase_list)
+
+# Manipulate the list
+phrase_list.append("universe")
+phrase_list.clear()
+phrase_list = ["Embrace", "cosmic", "burritos", "of", "existence;", "dance", "with", "starlight", "in", "taco", "shells"]
+
+# Copy, count, extend, index, insert, pop, remove, reverse, and sort
+copied_list = phrase_list.copy()
+count_cosmic = phrase_list.count("cosmic")
+additional_elements = ["and", "galaxies"]
+phrase_list.extend(additional_elements)
+index_dance = phrase_list.index("dance")
+phrase_list.insert(5, "groove")
+popped_element = phrase_list.pop(8)
+phrase_list.remove("cosmic")
+phrase_list.reverse()
+phrase_list.sort()
+
+# Display results
+print("Copied list:", copied_list)
+print("Count of 'cosmic':", count_cosmic)
+print("After extend:", phrase_list)
+print("Index of 'dance':", index_dance)
+print("After insert:", phrase_list)
+print("Popped element:", popped_element)
+print("After remove:", phrase_list)
+print("After reverse:", phrase_list)
+print("After sort:", phrase_list)
+
+Sources: OpenAi, Codefellows colleagues, Cody Juhl, Andrew Carroll
