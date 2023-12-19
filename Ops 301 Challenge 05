@@ -1,3 +1,9 @@
+#!/bin/bash
+
+Author:   Malena Tomlin
+Course:   Ops 301 Challenge 05
+Date:     12/2023
+
 # ## Variable Names and Descriptions
 
 # - `bdir`: Defines the backup directory path where compressed log files will be stored.
@@ -9,8 +15,6 @@
 # - `logs`: An array containing the paths of the log files to be backed up.
 
 # These variables are used to manage the backup, compression, and comparison of log files in the script.
-
-#!/bin/bash
 
 # Define backup directory and timestamp
 bdir="/var/log/backups"
